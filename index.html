@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title> Boolfix</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
+
+  <!-- js script -->
+  <script src="https://momentjs.com/downloads/moment.js"></script>   <!-- moment  js-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.js"></script> <!-- handlebars -->
+
+  <!-- css -->
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+
+  <div class="container">
+
+    <div class="searchBar">
+      <!-- <label>  </label> -->
+      <input  id="search" type="text" placeholder=" Inserisci il titolo del film">
+      <button type="button" name="button"> vai </button>
+      
+    </div>
+
+  </div>
+
+
+  <!--  my template -->
+  <script id="movie-template" type="text/x-handlebars-template">
+    <div class="movie-poster">  {{ data }}</div>
+  </script>
+
+
+  <script type="text/javascript" src="js/script.js">  </script>
+</body>
+</html>
