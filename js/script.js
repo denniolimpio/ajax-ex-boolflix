@@ -6,7 +6,7 @@ $(document).ready( function() {
 
   //  cliccando sulla input leggo il valore inserito dall'utente
 
-  $("#search").click ( function () {
+  $("#search").keypress ( function () {
 
   // valore inserito dall'utente
 
@@ -14,9 +14,30 @@ $(document).ready( function() {
 
   console.log(inputSearch);
 
+  if ( inputSearch != "") {
+    ricercaFilm(inputSearch)
+
+  }
+
+
+
   });
 
-// chiamo l'api contenente le info sui film
+  // cliccando su " buttonSearch" avvio la ricerca
+  $(document).on( "click", "#buttonSearch", function (){
+
+    ricercaFilm(ricerca)
+    
+  });
+
+
+
+//  ------- Funzioni -------
+
+function ricercaFilm(ricerca) {
+
+  // chiamo l'api contenente le info sui film
+
   $.ajax (
 
   {
@@ -26,7 +47,7 @@ $(document).ready( function() {
       {
 
       api_key: "03a82650cf8ff5326e52310b09aeb357",
-      query: ' ritorno al futuro',
+      query: ' mad max',
       language: 'it-IT',
 
     },
@@ -47,7 +68,8 @@ $(document).ready( function() {
         // console.log(arrayDataResutls);
 
         // SCHEDA FILM
-        // devo mostrare
+        // devo mostrare:
+
         // -- >Titolo
         // -- > Titolo Originale
         // -- > Lingua
@@ -63,28 +85,11 @@ $(document).ready( function() {
 
         });
 
-        console.log(schedaFilm);
-
+        // invoco la funzione e stampo la scheda film
+        stampoFilm(schedaFilm)
 
 
       };
-      // fine ciclo for dataResults
-
-
-      // stampo la scheda film con handlebars
-
-      var source = $("#movie-template").html();
-      var template = Handlebars.compile(source);
-
-      var html = template(schedaFilm);
-      $("#container").append(html);
-
-
-
-
-      // console.log(schedaFilm);
-
-
     },
 
     error: function() {
@@ -92,14 +97,19 @@ $(document).ready( function() {
       alert( "attenzione, si è verificato un erroe")
 
     }
-
-
 });
+}
 
 
 
+//  Con questa funzione compilo il  template
+function stampoFilm(schedaFilm) {
+  var source = $("#film-template").html();
+  var template = Handlebars.compile(source);
 
-
+  var html = template(schedaFilm);
+  $("#container-film").append(html);
+}
 
 
 

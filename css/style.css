@@ -6,6 +6,9 @@
   box-sizing: border-box;
 }
 
+body {
+  font-size: 30px;
+}
 /* generali */
 
 input {
@@ -21,10 +24,18 @@ button {
   height: 30px;
   border-radius: 5px;
 }
-
+.film-poster {
+  margin: 50px 0;
+}
 /* classi */
 
 .searchBar {
-margin: 30px 60px;
+padding: 30px 60px;
+background-color: blue;
 
+}
+
+.vote_average {
+
+  color: red;
 }

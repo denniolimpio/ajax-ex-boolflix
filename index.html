@@ -21,26 +21,29 @@
   <div class="searchBar">
     <!-- <label>  </label> -->
     <input  id="search" type="text" placeholder=" Inserisci il titolo del film">
-    <button type="button" name="button"> vai </button>
-
-  </div>
-  
-  <div id="container">
-
-
+    <button id="buttonSearch"> vai </button>
 
   </div>
 
+  <div id="container-film">
 
+
+
+  </div>
+
+  <img src="" alt="">
   <!--  my template -->
-  <script id="movie-template" type="text/x-handlebars-template">
+  <script id="film-template" type="text/x-handlebars-template">
 
-    <div id="movie-poster">
+    <div id="film-poster">
 
-      <h1 class=" title "> {{ title }} </h1>
-      <span class="original_title">  {{ original_title }}</span>
-      <span class="original_language">  {{ original_language }}</span>
-      <span class="vote_average">  {{ vote_average }}</span>
+      <h1 class=" title ">{{ title }}, </h1>
+
+      <div class="scheda-film">
+        <span class="original_title">  TITOLO ORIGINALE: {{ original_title }},</span>
+        <span class="original_language">  LINGUA ORIGINALE: {{ original_language }}, </span>
+        <span class="vote_average">  VOTO {{ vote_average }}</span>
+      </div>
 
 
     </div>
