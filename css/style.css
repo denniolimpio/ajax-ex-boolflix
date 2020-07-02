@@ -7,7 +7,7 @@
 }
 
 body {
-  font-size: 30px;
+  font-size: 20px;
 }
 /* generali */
 
@@ -24,7 +24,7 @@ button {
   height: 30px;
   border-radius: 5px;
 }
-.film-poster {
+.template {
   margin: 50px 0;
 }
 /* classi */
@@ -37,5 +37,5 @@ background-color: blue;
 
 .vote_average {
 
-  color: red;
+  color: orange;
 }

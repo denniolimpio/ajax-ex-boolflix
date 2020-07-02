@@ -64,7 +64,7 @@ $(document).ready( function() {
 
           var dataResults = dataResponse.results;
 
-          console.log(dataResults);
+          // console.log(dataResults);
 
           stampaRisultato(dataResults)
         },
@@ -107,7 +107,7 @@ $(document).ready( function() {
 
             var dataResults = dataResponse.results;
 
-            console.log(dataResults);
+            // console.log(dataResults);
 
             stampaRisultato(dataResults)
           },
@@ -142,7 +142,14 @@ $(document).ready( function() {
         // -- > Lingua
         // -- > voto
 
-        var titoloSerie = ( arrayDataResutls.name);
+
+
+        // dichiaro le variabili
+        var titoloSerie = arrayDataResutls.name;
+        var voto = arrayDataResutls.vote_average;
+        var star  =convertoVoto(voto);
+
+
 
         var scheda = ( {
 
@@ -152,7 +159,8 @@ $(document).ready( function() {
           name: titoloSerie,
           original_title: arrayDataResutls.original_title,
           original_language: arrayDataResutls.original_language,
-          vote_average: arrayDataResutls.vote_average,
+          overview: arrayDataResutls.overview,
+          vote_average: star,
 
         });
         var html = template(scheda);
@@ -169,14 +177,13 @@ $(document).ready( function() {
     }
 
 
-// leggo valore input e, se questo non è vuoto, stampo a schermo i risultati della ricerca
+// leggo valore input e, se qnon è vuoto, stampo a schermo i risultati della ricerca
 
   function avvioRicerca () {
 
     var inputSearch = $("#input").val();
 
     if ( inputSearch != "") {
-
       libreriaFilm(inputSearch);
       libreriaTv (inputSearch);
     }
@@ -184,6 +191,21 @@ $(document).ready( function() {
   }
 
 
+// creo una funzione per convertire il voto da decimale a intero ( 1 - 5 )
+// per voti compresi tra 1 e 5 aggiugno le stelle piene
+// ---> altrimenti aggiungo le stelle vuote
+function convertoVoto(vote_av) {
+   var vote = Math.floor(vote_av / 2);
+   var stars = '';
+   for (var i = 1; i <= 5; i++) {
+       if (i <= vote) {
+         stars += '<i class="fas fa-star"></i>';
+       } else {
+         stars += '<i class="far fa-star"></i>';
+       }
+   }
+   return stars;
+ }
 
 
   }); // chiudo document ready

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title> Boolfix</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
 
   <!-- js script -->
   <script src="https://momentjs.com/downloads/moment.js"></script>   <!-- moment  js-->
@@ -12,6 +12,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.js"></script> <!-- handlebars -->
 
   <!-- css -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
   <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -35,7 +36,7 @@
   <!--  my template -->
   <script id="template" type="text/x-handlebars-template">
 
-    <div id="poster">
+    <div id="item">
 
       <h1 class=" title ">{{ title }} </h1>
       <h1 class=" title ">{{ name }} </h1>
@@ -43,8 +44,10 @@
 
       <ul class="scheda">
         <li class="original_title">  TITOLO ORIGINALE: {{ original_title }},</li>
-        <li class="original_language">  LINGUA ORIGINALE: {{ original_language }}, </li>
-        <li class="vote_average">  VOTO {{ vote_average }}</li>
+        <li class="original_language">  LINGUA ORIGINALE: {{ original_language }} </li>
+        <li class="vote_average">  VALUTAZIONE:  {{{vote_average}}} </li>
+        <li class="description">   {{ overview }}</li>
+
       </ul>
 
 
