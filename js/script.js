@@ -4,62 +4,130 @@ $(document).ready( function() {
   // 03a82650cf8ff5326e52310b09aeb357
 
 
-  //  cliccando sulla input leggo il valore inserito dall'utente
+  //  cliccando su buttonsearch avvio la ricerca
+  //--- > leggo il valore inserito dall'utente nella inputSearch
+  // --> se la input non è vuota, invoca la funzione searchFilm e avvio la ricerca
+  // -- > la funzione Searchfilm stampa  i risultati a schermo
 
-  $("#search").keypress ( function () {
+  $("#buttonSearch").click ( function () {
 
-  // valore inserito dall'utente
-
-  var inputSearch = $(this).val();
-
-  console.log(inputSearch);
-
-  if ( inputSearch != "") {
-    ricercaFilm(inputSearch)
-
-  }
-
-
-
-  });
-
-  // cliccando su " buttonSearch" avvio la ricerca
-  $(document).on( "click", "#buttonSearch", function (){
-
-    ricercaFilm(ricerca)
-    
+    // invoco la funzione reset(), in questo modo svuoto il mio template
+    reset();
+    // con la funzione readInput() leggo il valore della input inserita dall'utente
+    // se il campo input non è vuoto, avvio la ricerca e stampo i ri
+    avvioRicerca ()
   });
 
 
 
-//  ------- Funzioni -------
+  // digitando il tasto invio (13)  avvio la ricerca
 
-function ricercaFilm(ricerca) {
+  $("#input").keypress ( function () {
 
-  // chiamo l'api contenente le info sui film
+    reset();
 
-  $.ajax (
+    if (event.which === 13 || event.keyCode === 13) {
 
-  {
-    url: 'https://api.themoviedb.org/3/search/movie',
-    method: 'GET',
-    data:
+      avvioRicerca ()
+
+    }
+  });
+
+
+  //  ------- Funzioni -------
+
+
+
+  function libreriaFilm (film) {
+
+    var urlFilm = 'https://api.themoviedb.org/3/search/movie';
+    var myKey = "03a82650cf8ff5326e52310b09aeb357";
+
+    // chiamo l'api contenente le info sui film
+
+    $.ajax (
+
       {
+        url: urlFilm,
+        method: 'GET',
+        data:
+        {
 
-      api_key: "03a82650cf8ff5326e52310b09aeb357",
-      query: ' mad max',
-      language: 'it-IT',
+          api_key: myKey,
+          query: film,
+          language: 'it-IT',
 
-    },
-    // se l'api viene caricata correttamente
+        },
+        // se l'api viene caricata correttamente
 
-    success: function(dataResponse) {
+        success: function(dataResponse) {
 
-      var dataResults = dataResponse.results;
+          var dataResults = dataResponse.results;
 
-      console.log(dataResults);
+          console.log(dataResults);
 
-      // ciclo for dataResults
+          stampaRisultato(dataResults)
+        },
+
+        error: function() {
+
+          alert( "attenzione, si è verificato un erroe")
+
+        }
+
+
+      });
+    }
+
+
+
+    function libreriaTv (tv) {
+
+      var urlTv = 'https://api.themoviedb.org/3/search/tv';
+      var myKey = "03a82650cf8ff5326e52310b09aeb357";
+
+      // chiamo l'api contenente le info sui film
+
+      $.ajax (
+
+        {
+          url: urlTv,
+          method: 'GET',
+          data:
+          {
+
+            api_key: myKey,
+            query: tv,
+            language: 'it-IT',
+
+          },
+          // se l'api viene caricata correttamente
+
+          success: function(dataResponse) {
+
+            var dataResults = dataResponse.results;
+
+            console.log(dataResults);
+
+            stampaRisultato(dataResults)
+          },
+
+          error: function() {
+
+            alert( "attenzione, si è verificato un erroe")
+
+          }
+
+
+        });
+      }
+
+    //  Con questa funzione compilo il  template
+    function stampaRisultato(dataResults) {
+
+
+      var source = $("#template").html();
+      var template = Handlebars.compile(source);
 
 
       for ( var i = 0; i < dataResults.length; i++) {
@@ -68,49 +136,54 @@ function ricercaFilm(ricerca) {
         // console.log(arrayDataResutls);
 
         // SCHEDA FILM
-        // devo mostrare:
-
+        // devo mostrare
         // -- >Titolo
         // -- > Titolo Originale
         // -- > Lingua
         // -- > voto
 
-          var schedaFilm = ( {
+        var titoloSerie = ( arrayDataResutls.name);
+
+        var scheda = ( {
+
+
 
           title: arrayDataResutls.title,
+          name: titoloSerie,
           original_title: arrayDataResutls.original_title,
           original_language: arrayDataResutls.original_language,
           vote_average: arrayDataResutls.vote_average,
 
-
         });
-
-        // invoco la funzione e stampo la scheda film
-        stampoFilm(schedaFilm)
-
-
-      };
-    },
-
-    error: function() {
-
-      alert( "attenzione, si è verificato un erroe")
+        var html = template(scheda);
+        $("#container").append(html);
+      }
 
     }
-});
-}
+
+
+    // funzione reset
+
+    function reset() {
+      $("#container").html("");
+    }
+
+
+// leggo valore input e, se questo non è vuoto, stampo a schermo i risultati della ricerca
+
+  function avvioRicerca () {
+
+    var inputSearch = $("#input").val();
+
+    if ( inputSearch != "") {
+
+      libreriaFilm(inputSearch);
+      libreriaTv (inputSearch);
+    }
+
+  }
 
 
 
-//  Con questa funzione compilo il  template
-function stampoFilm(schedaFilm) {
-  var source = $("#film-template").html();
-  var template = Handlebars.compile(source);
 
-  var html = template(schedaFilm);
-  $("#container-film").append(html);
-}
-
-
-
-}); // chiudo document ready
+  }); // chiudo document ready

@@ -20,12 +20,12 @@
 
   <div class="searchBar">
     <!-- <label>  </label> -->
-    <input  id="search" type="text" placeholder=" Inserisci il titolo del film">
+    <input  id="input" type="text" placeholder=" Inserisci il titolo del film">
     <button id="buttonSearch"> vai </button>
 
   </div>
 
-  <div id="container-film">
+  <div id="container">
 
 
 
@@ -33,17 +33,19 @@
 
   <img src="" alt="">
   <!--  my template -->
-  <script id="film-template" type="text/x-handlebars-template">
+  <script id="template" type="text/x-handlebars-template">
 
-    <div id="film-poster">
+    <div id="poster">
 
-      <h1 class=" title ">{{ title }}, </h1>
+      <h1 class=" title ">{{ title }} </h1>
+      <h1 class=" title ">{{ name }} </h1>
 
-      <div class="scheda-film">
-        <span class="original_title">  TITOLO ORIGINALE: {{ original_title }},</span>
-        <span class="original_language">  LINGUA ORIGINALE: {{ original_language }}, </span>
-        <span class="vote_average">  VOTO {{ vote_average }}</span>
-      </div>
+
+      <ul class="scheda">
+        <li class="original_title">  TITOLO ORIGINALE: {{ original_title }},</li>
+        <li class="original_language">  LINGUA ORIGINALE: {{ original_language }}, </li>
+        <li class="vote_average">  VOTO {{ vote_average }}</li>
+      </ul>
 
 
     </div>
