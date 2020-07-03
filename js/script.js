@@ -140,7 +140,7 @@ $(document).ready( function() {
             name: titoloSerie,
             original_title: arrayDataResutls.original_title,
             original_language: linguaBandiera(arrayDataResutls.original_language),   // --- > #bandiere
-
+            poster_path: arrayDataResutls.poster_path,
             overview: arrayDataResutls.overview,
             vote_average: star,
           });

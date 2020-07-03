@@ -9,9 +9,17 @@
 /* fine reset */
 
 body {
-  font-size: 20px;
+  font-size: 15px;
 }
 /* generali */
+
+ul {
+  list-style-type: none;
+}
+ul li {
+  margin: 10px;
+
+}
 
 input {
   width: 300px;
@@ -29,8 +37,9 @@ button {
 
 .flag img {
 
-  width: 100px;
+  width: 50px;
   height: auto;
+  margin: 20px 0;
 
 }
 
@@ -50,8 +59,19 @@ background-color: blue;
 
 /* layout  */
 
-/* template */
-
-.template {
-  margin: 50px 0;
+.container {
+display: flex;
+justify-content: space-around;
+align-items: center;
+flex-wrap: wrap;
+padding: 40px 20px;
 }
+
+.container .item {
+  height: 1000px;
+  flex-basis: calc( 100% / 3);
+
+
+}
+
+/* template */
