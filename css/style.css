@@ -6,6 +6,8 @@
   box-sizing: border-box;
 }
 
+/* fine reset */
+
 body {
   font-size: 20px;
 }
@@ -24,9 +26,14 @@ button {
   height: 30px;
   border-radius: 5px;
 }
-.template {
-  margin: 50px 0;
+
+.flag img {
+
+  width: 100px;
+  height: auto;
+
 }
+
 /* classi */
 
 .searchBar {
@@ -38,4 +45,13 @@ background-color: blue;
 .vote_average {
 
   color: orange;
+}
+
+
+/* layout  */
+
+/* template */
+
+.template {
+  margin: 50px 0;
 }

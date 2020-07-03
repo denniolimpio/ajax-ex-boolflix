@@ -2,29 +2,42 @@
 // 03a82650cf8ff5326e52310b09aeb357
 
 $(document).ready( function() {
-  //  cliccando su buttonsearch avvio la ricerca
-  //--- > leggo il valore inserito dall'utente nella inputSearch
-  // --> se la input non è vuota, invoca la funzione searchFilm e avvio la ricerca
-  // -- > la funzione Searchfilm stampa  i risultati a schermo
+
+  //  cliccando su buttonsearch genero un evento:
+  //  invoco la funzione reset():
+  //  -----> che svuota svuota il contenitore nel DOM)
+
+  //  invoco la funzione avvioRicerca:
+  //  --> se la input non è vuota, cerca il contenuto corrispondente alla paroal chiave ( chiamata ajax)
+  //  --> mi ritorna info film e serie tv
+  //  -->  stampa i risultati nel dom
 
   $("#buttonSearch").click ( function () {
-    // invoco la funzione reset(), in questo modo svuoto il mio template
+
     reset();
-    // con la funzione readInput() leggo il valore della input inserita dall'utente
-    // se il campo input non è vuoto, avvio la ricerca e stampo i ri
+
     avvioRicerca ()
   });
 
-  // digitando il tasto invio (13)  avvio la ricerca
+
+  // digitando il tasto invio (13)  genero un evento
+
   $("#input").keypress ( function () {
+
     reset();
+
     if (event.which === 13 || event.keyCode === 13) {
+
       avvioRicerca ()
     }
+
   });
+
+
+
   //  ------- Funzioni -------
 
-  //  #libreriaFilm -------
+  //  funzione #libreriaFilm -------
 
   function libreriaFilm (film) {
 
@@ -58,7 +71,7 @@ $(document).ready( function() {
       });
     }
 
-    //  #libreriaTv -------
+    //  funzione #libreriaTv -------
 
     function libreriaTv (tv) {
 
@@ -95,7 +108,11 @@ $(document).ready( function() {
         });
       }
 
-      //  #stampaRisultato -------
+
+
+
+
+      //  funzione #stampaRisultato -------
 
       // compilo il template con handlebars
       function stampaRisultato(dataResults) {
@@ -116,30 +133,35 @@ $(document).ready( function() {
           //converto i numeri da decimali a interi
           var star  =convertoVoto(voto);
 
-          // SCHEDA FILM
+          // SCHEDA
+
           var scheda = ( {
             title: arrayDataResutls.title,
             name: titoloSerie,
             original_title: arrayDataResutls.original_title,
-            original_language: arrayDataResutls.original_language,
+            original_language: linguaBandiera(arrayDataResutls.original_language),   // --- > #bandiere
+
             overview: arrayDataResutls.overview,
             vote_average: star,
           });
 
+          // inserisco il template all'interno del contenitore
           var html = template(scheda);
           $("#container").append(html);
         }
 
       }
 
-      // ---- #reset
+      // ----  funzione #reset
 
       //---> elimino il contenuto del template
+
       function reset() {
+
         $("#container").html("");
       }
 
-      // ---- #avvioRicerca
+      // ---- funzione #avvioRicerca
       //  -- > se valore input e, se qnon è vuoto, stampo a schermo i risultati della ricerca
 
       function avvioRicerca () {
@@ -152,7 +174,7 @@ $(document).ready( function() {
         }
 
       }
-      // --- >  #convertoVoto
+      // --- > funzione  #convertoVoto
 
       // creo una funzione per convertire il voto da decimale a intero ( 1 - 5 )
       // per voti compresi tra 1 e 5 aggiugno le stelle piene
@@ -171,6 +193,18 @@ $(document).ready( function() {
         return stars;
       }
 
-      // --- > #bandiere
+
+      // creo una funzione che assegna l'immagine della bandiera in base alla lingua del film/serie
+      // -- > es. ( lingua ita, bandiera italiana)
+      function linguaBandiera( flag)  {
+
+         var lingue = ["it", "en", "de", "fr", "es"];
+
+         if (lingue.includes(flag)) {
+
+              flag = '<img src="img/' + flag + '.png" alt="bandiera">';
+               }
+               return flag;
+      }
 
     }); // chiudo document ready
