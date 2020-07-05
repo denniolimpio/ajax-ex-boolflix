@@ -18,39 +18,74 @@
 </head>
 <body>
 
+  <div class="wrap">
 
-  <div class="searchBar">
-    <!-- <label>  </label> -->
-    <input  id="input" type="text" placeholder=" Inserisci il titolo del film">
-    <button id="buttonSearch"> vai </button>
+
+    <header>
+
+
+      <div class="top-header">
+
+        <div class="logo">
+
+          <img src="img/mylogo.png" alt="logo">
+
+        </div>
+
+        <div class="searchBar">
+          <input  id="input" type="text" placeholder=" Inserisci il titolo da cercare">
+          <button id="buttonSearch">
+            <i class="fas fa-search"></i>
+           </button>
+        </div>
+
+      </div>
+
+    </header>
+
+    <main>
+
+      <div id="container" class="container">
+
+      </div>
+
+    </main>
+
+
+
+
+
+
 
   </div>
 
-  <div id="container" class="container">
 
 
-  </div>
 
-  <img src="" alt="">
+
+
   <!--  my template -->
   <script id="template" type="text/x-handlebars-template">
 
     <div id="item" class="item">
 
-      <h1 class=" title ">{{ title }} </h1>
-      <h1 class=" title ">{{ name }} </h1>
+
+      <div class="locandina">
+
         <img src=https://image.tmdb.org/t/p/w342{{poster_path}} alt="poster_path">
 
+        <ul class="scheda">
+          <h1 class=" title ">{{ title }} </h1>
+           <h1 class=" title ">{{ name }} </h1>
+           <li class="original_title">  TITOLO ORIGINALE: {{ original_title }},</li>
+           <li class="description">   {{ overview }}</li>
+          <li class="vote_average">  VALUTAZIONE:  {{{vote_average}}} </li>
+          <li class="flag">  {{{original_language}}} </li>
 
 
-      <ul class="scheda">
-        <li class="original_title">  TITOLO ORIGINALE: {{ original_title }},</li>
-        <li class="flag">  {{{original_language}}} </li>
-        <li class="vote_average">  VALUTAZIONE:  {{{vote_average}}} </li>
-        <li class="description">   {{ overview }}</li>
+        </ul>
 
-      </ul>
-
+      </div>
 
     </div>
 

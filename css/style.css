@@ -9,7 +9,8 @@
 /* fine reset */
 
 body {
-  font-size: 15px;
+  color: #fff;
+  font-size: 11px;
 }
 /* generali */
 
@@ -21,13 +22,20 @@ ul li {
 
 }
 
+h1 {
+  text-align: center;
+  color: red;
+}
+
 input {
   width: 300px;
   height: 30px;
   border-radius: 5px;
 
 }
-
+img {
+  width: 200px;
+}
 button {
 
   width: 40px;
@@ -45,33 +53,80 @@ button {
 
 /* classi */
 
-.searchBar {
-padding: 30px 60px;
-background-color: blue;
-
-}
 
 .vote_average {
 
   color: orange;
 }
-
+.scheda {
+  display: none;
+}
 
 /* layout  */
 
+
+
+.top-header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  background: #1a1b1d;
+}
+
+.locandina {
+  position: relative;
+}
+
+.locandina .scheda {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: auto;
+}
+
+.locandina > img {
+  width: 100%;
+  box-shadow: -1px 6px 47px -1px rgba(0,0,0,0.73);
+  border-radius: 18px 18px 18px 18px;
+  border: 7px solid #000000;
+  transition: all 1s ease
+}
+
+
 .container {
-display: flex;
-justify-content: space-around;
-align-items: center;
-flex-wrap: wrap;
-padding: 40px 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 40px 20px;
+  height: calc( 100vh - 100px);
+  overflow-y: auto;
+  background-color: #282a2d;
+
 }
 
 .container .item {
-  height: 1000px;
-  flex-basis: calc( 100% / 3);
+  flex-basis: calc( 100% / 7);
+  margin: 20px 5px;
 
 
 }
+/*  effect */
 
+.item:hover .scheda {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  background-color: #000;
+  transition: all 1s ease
+}
+
+input:focus {
+  outline: none;
+}
 /* template */
