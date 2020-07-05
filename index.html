@@ -44,11 +44,28 @@
     </header>
 
     <main>
+      <div class="sidebar left">
+        <div>
+          <ul>
+            <li> Playlist</li>
+            <li> Ultime uscite</li>
+            <li> Categorie</li>
+          </ul>
+        </div>
 
-      <div id="container" class="container">
+      <div class="account">
+        <ul>
+          <li>
+            <img src="img/profilo-2.png" alt="profilo">
+            <span> Denniolimpio</span>
+          </li>
+        </ul>
 
       </div>
 
+      </div>
+
+      <div id="container" class="container right">  </div>
     </main>
 
 
@@ -64,14 +81,11 @@
 
 
 
-  <!--  my template -->
+  <!--   template cover  -->
   <script id="template" type="text/x-handlebars-template">
 
     <div id="item" class="item">
-
-
-      <div class="locandina">
-
+    <div class="locandina">
         <img src=https://image.tmdb.org/t/p/w342{{poster_path}} alt="poster_path">
 
         <ul class="scheda">
@@ -81,12 +95,20 @@
            <li class="description">   {{ overview }}</li>
           <li class="vote_average">  VALUTAZIONE:  {{{vote_average}}} </li>
           <li class="flag">  {{{original_language}}} </li>
-
-
         </ul>
 
       </div>
 
+    </div>
+
+  </script>
+
+
+  <!--   template cover  -->
+  <script id="templateMessage" type="text/x-handlebars-template">
+
+    <div id="message" class="item">
+      <p class="textMessage"> </p>
     </div>
 
   </script>

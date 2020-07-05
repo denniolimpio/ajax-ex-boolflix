@@ -61,8 +61,9 @@ $(document).ready( function() {
         success: function(dataResponse) {
 
           var dataResults = dataResponse.results;
-          // console.log(dataResults);
-          stampaRisultato(dataResults)
+
+
+            stampaRisultato(dataResults)
         },
         // altrimenti se l'api non viene caricata...errore
 
@@ -78,7 +79,6 @@ $(document).ready( function() {
 
       var urlTv = 'https://api.themoviedb.org/3/search/tv';
       var myKey = "03a82650cf8ff5326e52310b09aeb357";
-
       // chiamo l'api contenente le info sui film
       $.ajax (
 
@@ -98,9 +98,12 @@ $(document).ready( function() {
 
             var dataResults = dataResponse.results;
 
+
+              stampaRisultato(dataResults)
+
+
             // console.log(dataResults);
 
-            stampaRisultato(dataResults)
           },
 
           error: function() {
@@ -123,8 +126,13 @@ $(document).ready( function() {
         for ( var i = 0; i < dataResults.length; i++) {
 
           var arrayDataResutls = dataResults[i];
-          // console.log(arrayDataResutls);
+          console.log(arrayDataResutls);
 
+          if (dataResults <= 0) {
+
+            console.log( "non ci sono risultati");
+
+          }
 
           // dichiaro le variabili
 
@@ -145,6 +153,8 @@ $(document).ready( function() {
             overview: arrayDataResutls.overview,
             vote_average: star,
           });
+
+
 
           // inserisco il template all'interno del contenitore
           var html = template(scheda);
@@ -207,5 +217,8 @@ $(document).ready( function() {
                }
                return flag;
       }
+
+
+// creo una funzione per stampare un messaggio a schermo nel caso la ricerca non dovesse produrre risultati.
 
     }); // chiudo document ready

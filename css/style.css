@@ -74,6 +74,7 @@ button {
   align-items: center;
   padding: 0 40px;
   background: #1a1b1d;
+
 }
 
 .locandina {
@@ -104,16 +105,50 @@ button {
   flex-wrap: wrap;
   padding: 40px 20px;
   height: calc( 100vh - 100px);
+  width: calc(100% - 280px);
   overflow-y: auto;
   background-color: #282a2d;
 
+
 }
 
+.right {
+  float: right
+}
+.left {
+  float: left;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 280px;
+  height: calc(100vh - 100px);
+  background-color: #111213;
+}
+.sidebar li {
+  margin: 30px 50px;
+  font-size: 20px;
+}
+.sidebar img {
+  width: 40px;
+  vertical-align: middle;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.sidebar span {
+  font-size: 15px;
+}
 .container .item {
   flex-basis: calc( 100% / 7);
   margin: 20px 5px;
 
 
+}
+.account {
+  border-top: .3px solid white;
 }
 /*  effect */
 
